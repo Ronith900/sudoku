@@ -95,4 +95,5 @@ def test_if_sudoku_grid_valid_fail():
             ,[".",".",".","4","1","9",".",".","5"]
             ,[".",".",".",".","8",".",".","7","9"]]
     result = is_sudoku_grid_valid(input)
-    assert result == False
+    assert result == (False,"Number 8 already exists in 3*3 grid")
+
