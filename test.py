@@ -1,5 +1,6 @@
 
-from main import remove_user_input,is_user_input_cell_valid,is_user_input_value_valid,UserInput,is_sudoku_grid_valid,insert_user_input
+from main import remove_user_input,is_user_input_cell_valid,is_user_input_value_valid,is_sudoku_grid_valid,insert_user_input
+from main import SudokuCheckReport,UserInput
 import pytest
 
 
@@ -82,7 +83,7 @@ def test_if_sudoku_grid_valid_pass():
             ,[".",".",".",".","8",".",".","7","9"]
             ]
     result = is_sudoku_grid_valid(input)
-    assert result == True
+    assert result == SudokuCheckReport(True,'No rule violations detected.')
 
 def test_if_sudoku_grid_valid_fail():
     input = [["8","3",".",".","7",".",".",".","."]
@@ -95,5 +96,6 @@ def test_if_sudoku_grid_valid_fail():
             ,[".",".",".","4","1","9",".",".","5"]
             ,[".",".",".",".","8",".",".","7","9"]]
     result = is_sudoku_grid_valid(input)
-    assert result == (False,"Number 8 already exists in 3*3 grid")
+    assert result == SudokuCheckReport(False,"Number 8 already exists in 3*3 grid")
+
 
