@@ -29,3 +29,12 @@ sudoku/
     ├── test_game.py
     └── test_parser.py
 ```
+
+Requirements
+Python 3.12 (or your version)
+pytest
+
+# How to run the game
+
+From project root
+python main.py
