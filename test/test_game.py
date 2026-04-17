@@ -1,7 +1,14 @@
 
-from main import remove_user_input,is_user_input_cell_valid,is_user_input_value_valid,is_sudoku_grid_valid,insert_user_input
-from main import get_user_object_from_user_response,game_is_completed,hint
-from main import SudokuCheckReport,UserInput,HintReport
+from game import (
+    game_is_completed,
+    get_user_object_from_user_response,
+    insert_user_input,
+    is_user_input_cell_valid,
+    is_user_input_value_valid,
+    is_sudoku_grid_valid,
+    remove_user_input,
+)
+from models import SudokuCheckReport,UserInput,HintReport
 import pytest
 
 
