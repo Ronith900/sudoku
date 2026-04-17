@@ -5,12 +5,12 @@ from constants import ROW_MAPPING, INDEX_TO_ROW, PUZZLE
 from models import UserInput, SudokuCheckReport, HintReport
 
 
-def get_pre_filled_cells():
+def get_pre_filled_cells(board):
     pre_filled_cells = set()
 
-    for row_index in range(len(PUZZLE)):
-        for col_index in range(len(PUZZLE[row_index])):
-            if PUZZLE[row_index][col_index] != ".":
+    for row_index in range(len(board)):
+        for col_index in range(len(board[row_index])):
+            if board[row_index][col_index] != ".":
                 pre_filled_cells.add(f"{INDEX_TO_ROW[row_index]}{col_index + 1}")
 
     return pre_filled_cells
@@ -21,8 +21,8 @@ def get_user_object_from_user_response(user_response: str) -> UserInput:
     return UserInput(cell, value)
 
 
-def is_user_input_cell_valid(user_input: UserInput) -> bool:
-    pre_filled_cells = get_pre_filled_cells()
+def is_user_input_cell_valid(user_input: UserInput,board) -> bool:
+    pre_filled_cells = get_pre_filled_cells(board)
     return user_input.cell not in pre_filled_cells
 
 

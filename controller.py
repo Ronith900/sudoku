@@ -24,7 +24,7 @@ def handle_command(parsed, board) -> bool:
 
     if parsed.action == "clear":
         user_input = UserInput(parsed.cell, parsed.value)
-        if is_user_input_cell_valid(user_input):
+        if is_user_input_cell_valid(user_input,board):
             remove_user_input(user_input, board)
         else:
             print(f"Invalid move. {user_input.cell} is pre-filled.")
@@ -33,7 +33,7 @@ def handle_command(parsed, board) -> bool:
     if parsed.action == "move":
         user_input = UserInput(parsed.cell, parsed.value)
 
-        if not is_user_input_cell_valid(user_input):
+        if not is_user_input_cell_valid(user_input,board):
             print(f"Invalid move. {user_input.cell} is pre-filled.")
             return False
 
