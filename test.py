@@ -1,12 +1,13 @@
 
 from main import remove_user_input,is_user_input_cell_valid,is_user_input_value_valid,is_sudoku_grid_valid,insert_user_input
-from main import SudokuCheckReport,UserInput
+from main import get_user_object_from_user_response,game_is_completed,hint
+from main import SudokuCheckReport,UserInput,HintReport
 import pytest
 
 
 # This test function will check if input cell is part of the pre-filled values
 @pytest.mark.parametrize("user_input, expected",[(UserInput("A1",6),False),(UserInput("B2",6),True)])
-def test_is_user_input_move_valid(user_input,expected):
+def test_is_user_input_cell_valid(user_input,expected):
     result = is_user_input_cell_valid(user_input)
     assert result == expected
 
@@ -21,9 +22,13 @@ def test_is_user_input_value_valid(user_input,expected):
     assert result == expected
 
 
+
+def test_get_user_object_from_user_response():
+    assert get_user_object_from_user_response("A3 4") == UserInput("A3","4")
+
 def test_insert_user_input():
     user_input = UserInput("A3","2")
-    input = [["5","3",".",".","7",".",".",".","."]
+    board = [["5","3",".",".","7",".",".",".","."]
         ,["6",".",".","1","9","5",".",".","."]
         ,[".","9","8",".",".",".",".","6","."]
         ,["8",".",".",".","6",".",".",".","3"]
@@ -43,12 +48,13 @@ def test_insert_user_input():
         ,[".",".",".","4","1","9",".",".","5"]
         ,[".",".",".",".","8",".",".","7","9"]
         ]
-    result = insert_user_input(user_input,input)
+    result = insert_user_input(user_input,board)
     assert result == output
 
 def test_remove_user_input():
-    user_input = UserInput("A3")
-    input = [["5","3","7",".","7",".",".",".","."]
+    user_input = UserInput("A3","clear")
+    input = [
+         ["5","3","7",".","7",".",".",".","."]
         ,["6",".",".","1","9","5",".",".","."]
         ,[".","9","8",".",".",".",".","6","."]
         ,["8",".",".",".","6",".",".",".","3"]
@@ -97,5 +103,63 @@ def test_if_sudoku_grid_valid_fail():
             ,[".",".",".",".","8",".",".","7","9"]]
     result = is_sudoku_grid_valid(input)
     assert result == SudokuCheckReport(False,"Number 8 already exists in 3*3 grid")
+
+
+def test_if_sudoku_grid_valid_fail():
+    input = [["8","3",".",".","7",".",".",".","."]
+            ,["6",".",".","1","9","5",".",".","."]
+            ,[".","9",".",".",".",".",".","6","."]
+            ,["8",".",".",".","6",".",".",".","3"]
+            ,["4",".",".","8",".","3",".",".","1"]
+            ,["7",".",".",".","2",".",".",".","6"]
+            ,[".","6",".",".",".",".","2","8","."]
+            ,[".",".",".","4","1","9",".",".","5"]
+            ,[".",".",".",".","8",".",".","7","9"]]
+    result = is_sudoku_grid_valid(input)
+    assert result == SudokuCheckReport(False,"Number 8 already exists in column 1")
+
+
+def test_game_is_completed_fail():
+    input = [["8","3",".",".","7",".",".",".","."]
+        ,["6",".",".","1","9","5",".",".","."]
+        ,[".","9",".",".",".",".",".","6","."]
+        ,["8",".",".",".","6",".",".",".","3"]
+        ,["4",".",".","8",".","3",".",".","1"]
+        ,["7",".",".",".","2",".",".",".","6"]
+        ,[".","6",".",".",".",".","2","8","."]
+        ,[".",".",".","4","1","9",".",".","5"]
+        ,[".",".",".",".","8",".",".","7","9"]]
+    
+    assert game_is_completed(input) == False
+
+
+def test_game_is_completed_true():
+    board = [["5","3","4","6","7","8","9","1","2"]
+            ,["6","7","2","1","9","5","3","4","8"]
+            ,["1","9","8","3","4","2","5","6","7"]
+            ,["8","5","9","7","6","1","4","2","3"]
+            ,["4","2","6","8","5","3","7","9","1"]
+            ,["7","1","3","9","2","4","8","5","6"]
+            ,["9","6","1","5","3","7","2","8","4"]
+            ,["2","8","7","4","1","9","6","3","5"]
+            ,["3","4","5","2","8","6","1","7","9"]
+            ]
+    assert game_is_completed(board) == True
+
+# # for an 
+# def test_hint_user():
+#     input =  [["5","3",".",".","7",".",".",".","."]
+#             ,["6",".",".","1","9","5",".",".","."]
+#             ,[".","9","8",".",".",".",".","6","."]
+#             ,["8",".",".",".","6",".",".",".","3"]
+#             ,["4",".",".","8",".","3",".",".","1"]
+#             ,["7",".",".",".","2",".",".",".","6"]
+#             ,[".","6",".",".",".",".","2","8","."]
+#             ,[".",".",".","4","1","9",".",".","5"]
+#             ,[".",".",".",".","8",".",".","7","9"]
+#         ]
+    
+#     assert hint(input) == HintReport(True,False,UserInput("A3","1"))
+
 
 
