@@ -1,4 +1,4 @@
-def print_the_puzzle(board):
+def print_board(board):
     print("Your current grid\n")
     row_labels = "ABCDEFGHI"
     print("   1 2 3   4 5 6   7 8 9")
