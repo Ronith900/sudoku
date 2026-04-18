@@ -49,7 +49,7 @@ The codebase is organised using a modular layered design with clear separation o
 - `render.py` – prints the Sudoku board to the terminal
 - `models.py` – shared dataclasses / models
 
-Assumption - Hint function will only provide the next hint if the board is already valid
+Assumption - Hint reveals one correct value based on the generated solution board provide the current board the palyer is palying is valid
 
 # Requirements for this project
 
