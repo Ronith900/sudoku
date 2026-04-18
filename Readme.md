@@ -37,17 +37,24 @@ Python 3.12 (or your version)
 pytest
 ```
 
-## Installation
+# Installation
+
+## For Mac users
 
 ```bash
 git clone https://github.com/Ronith900/sudoku.git
 cd sudoku
-
-For Mac users
-    python -m venv venv (Create venv)
-    source venv/bin/activate
+python -m venv venv (Create venv)
+source venv/bin/activate
 
 pip install -r requirements.txt
+```
+
+## For Windows users
+
+```bash
+git clone https://github.com/Ronith900/sudoku.git
+cd sudoku
 ```
 
 # How to run the game
