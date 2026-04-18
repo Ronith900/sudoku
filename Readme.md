@@ -93,23 +93,18 @@ python -m pytest -v
 
 # Demo
 
-<img src="screenshots/game_start.png" width="700">
 ### Start Game
 
-![Game Start](screenshots/game_start.png)
-<img src="screenshots/clear_hint.png" width="700">
+<img src="screenshots/game_start.png" width="700">
 
 ### Clear and Hint Feature
 
-![Hint Demo](screenshots/clear_hint.png)
+<img src="screenshots/clear_hint.png" width="700">
 
-<img src="screenshots/test_cases_results.png" width="700">
 ### Pytest Results
 
-![Tests](screenshots/test_cases_results.png)
-
-<img src="screenshots/user_input.png" width="700">
+<img src="screenshots/test_cases_results.png" width="700">
 
 ### User Input
 
-![User Input](screenshots/user_input.png)
+<img src="screenshots/user_input.png" width="700">
