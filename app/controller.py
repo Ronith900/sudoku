@@ -1,18 +1,12 @@
 
-from app.game import (
-    hint,
-    insert_user_input,
-    is_sudoku_grid_valid,
-    is_user_input_cell_valid,
-    is_user_input_value_valid,
-    remove_user_input,
-)
+from app.game import insert_user_input,remove_user_input,hint
+from app.validation import is_grid_valid,is_cell_prefilled
 from app.models import UserInput
 
 
-def handle_command(parsed, board) -> bool:
+def handle_command(parsed, board,pre_filled_cells) -> bool:
     if parsed.action == "check":
-        report = is_sudoku_grid_valid(board)
+        report = is_grid_valid(board)
         print(report.verdict)
         return False
 
@@ -23,7 +17,7 @@ def handle_command(parsed, board) -> bool:
 
     if parsed.action == "clear":
         user_input = UserInput(parsed.cell, parsed.value)
-        if is_user_input_cell_valid(user_input,board):
+        if is_cell_prefilled(user_input,pre_filled_cells):
             remove_user_input(user_input, board)
         else:
             print(f"Invalid move. {user_input.cell} is pre-filled.")
@@ -32,12 +26,8 @@ def handle_command(parsed, board) -> bool:
     if parsed.action == "move":
         user_input = UserInput(parsed.cell, parsed.value)
 
-        if not is_user_input_cell_valid(user_input,board):
+        if is_cell_prefilled(user_input,pre_filled_cells):
             print(f"Invalid move. {user_input.cell} is pre-filled.")
-            return False
-
-        if not is_user_input_value_valid(user_input):
-            print(f"Invalid move. {user_input.cell} is out of bound.")
             return False
 
         insert_user_input(user_input, board)

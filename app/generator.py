@@ -1,6 +1,7 @@
 import copy
 import random
 
+from app.constants import INDEX_TO_ROW
 
 
 BOARD_SIZE = 9
@@ -77,11 +78,21 @@ def remove_cells(board: list[list[str]], cells_to_remove: int) -> list[list[str]
 
     return puzzle
 
+def get_pre_filled_cells(board):
+    pre_filled_cells = set()
+
+    for row_index in range(len(board)):
+        for col_index in range(len(board[row_index])):
+            if board[row_index][col_index] != ".":
+                pre_filled_cells.add(f"{INDEX_TO_ROW[row_index]}{col_index + 1}")
+
+    return pre_filled_cells
 
 def generate_puzzle(cells_to_remove: int = 51) -> tuple[list[list[str]], list[list[str]]]:
     solution_board = create_empty_board()
     fill_board(solution_board)
 
     puzzle_board = remove_cells(solution_board, cells_to_remove)
+    pre_filled_cells = get_pre_filled_cells(puzzle_board)
 
-    return puzzle_board, solution_board
+    return puzzle_board, solution_board,pre_filled_cells

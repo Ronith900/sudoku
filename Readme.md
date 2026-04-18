@@ -46,7 +46,6 @@ git clone https://github.com/Ronith900/sudoku.git
 cd sudoku
 python -m venv venv (Create venv)
 source venv/bin/activate
-
 pip install -r requirements.txt
 ```
 

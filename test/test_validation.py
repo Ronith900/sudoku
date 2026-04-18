@@ -1,43 +1,17 @@
 
-from app.game import hint
-from app.models import HintReport
+from app.validation import is_cell_prefilled,is_grid_valid,is_game_completed
+from app.models import UserInput
+import pytest
 
 
-def test_hint_returns_invalid_when_board_is_invalid():
-    current_board = [
-        ["5", "5", ".", ".", "7", ".", ".", ".", "."],
-        ["6", ".", ".", "1", "9", "5", ".", ".", "."],
-        [".", "9", "8", ".", ".", ".", ".", "6", "."],
-        ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
-        ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
-        ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
-        [".", "6", ".", ".", ".", ".", "2", "8", "."],
-        [".", ".", ".", "4", "1", "9", ".", ".", "5"],
-        [".", ".", ".", ".", "8", ".", ".", "7", "9"],
-    ]
-
-    solution_board = [
-        ["5", "3", "4", "6", "7", "8", "9", "1", "2"],
-        ["6", "7", "2", "1", "9", "5", "3", "4", "8"],
-        ["1", "9", "8", "3", "4", "2", "5", "6", "7"],
-        ["8", "5", "9", "7", "6", "1", "4", "2", "3"],
-        ["4", "2", "6", "8", "5", "3", "7", "9", "1"],
-        ["7", "1", "3", "9", "2", "4", "8", "5", "6"],
-        ["9", "6", "1", "5", "3", "7", "2", "8", "4"],
-        ["2", "8", "7", "4", "1", "9", "6", "3", "5"],
-        ["3", "4", "5", "2", "8", "6", "1", "7", "9"],
-    ]
-
-    result = hint(current_board, solution_board)
-
-    assert result == HintReport(
-        board_valid=False,
-        board_filled=False,
-        message="Board is invalid",
-    )
+pre_filled_cells = {"B1","A1","A4"}
+@pytest.mark.parametrize("user_input, expected",[(UserInput("A1",6),True),(UserInput("B2",6),False)])
+def test_is_cell_valid(user_input,expected):
+    result = is_cell_prefilled(user_input,pre_filled_cells)
+    assert result == expected
 
 
-def test_hint_fills_first_empty_cell():
+def test_is_grid_valid_true():
     current_board = [
         ["5", "3", ".", ".", "7", ".", ".", ".", "."],
         ["6", ".", ".", "1", "9", "5", ".", ".", "."],
@@ -50,6 +24,36 @@ def test_hint_fills_first_empty_cell():
         [".", ".", ".", ".", "8", ".", ".", "7", "9"],
     ]
 
+    assert is_grid_valid(current_board).valid == True
+
+def test_is_grid_valid_fail():
+    current_board = [
+        ["6", "3", ".", ".", "7", ".", ".", ".", "."],
+        ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+        [".", "9", "8", ".", ".", ".", ".", "6", "."],
+        ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+        ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+        ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+        [".", "6", ".", ".", ".", ".", "2", "8", "."],
+        [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+        [".", ".", ".", ".", "8", ".", ".", "7", "9"],
+    ]
+
+    assert is_grid_valid(current_board).valid == False
+
+
+def test_is_game_completed():
+    current_board = [
+        ["5", "3", "4", "6", "7", "8", "9", "1", "2"],
+        ["6", "7", "2", "1", "9", "5", "3", "4", "8"],
+        ["1", "9", "8", "3", "4", "2", "5", "6", "7"],
+        ["8", "5", "9", "7", "6", "1", "4", "2", "3"],
+        ["4", "2", "6", "8", "5", "3", "7", "9", "1"],
+        ["7", "1", "3", "9", "2", "4", "8", "5", "6"],
+        ["9", "6", "1", "5", "3", "7", "2", "8", "4"],
+        ["2", "8", "7", "4", "1", "9", "6", "3", "5"],
+        ["3", "4", "5", "2", "8", "6", "1", "7", "9"],
+    ]
     solution_board = [
         ["5", "3", "4", "6", "7", "8", "9", "1", "2"],
         ["6", "7", "2", "1", "9", "5", "3", "4", "8"],
@@ -61,11 +65,4 @@ def test_hint_fills_first_empty_cell():
         ["2", "8", "7", "4", "1", "9", "6", "3", "5"],
         ["3", "4", "5", "2", "8", "6", "1", "7", "9"],
     ]
-
-    result = hint(current_board, solution_board)
-
-    assert result == HintReport(
-        board_valid=True,
-        board_filled=False,
-        message="Hint: Cell A3 = 4",
-    )
+    assert is_game_completed(current_board=current_board,solution_board=solution_board)
