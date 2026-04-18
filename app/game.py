@@ -1,8 +1,8 @@
 from collections import defaultdict
 from typing import Optional
 
-from constants import ROW_MAPPING, INDEX_TO_ROW, PUZZLE
-from models import UserInput, SudokuCheckReport, HintReport
+from app.constants import ROW_MAPPING, INDEX_TO_ROW
+from app.models import UserInput, SudokuCheckReport, HintReport
 
 
 def get_pre_filled_cells(board):

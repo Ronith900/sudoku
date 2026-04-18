@@ -1,5 +1,5 @@
 
-from game import (
+from app.game import (
     hint,
     insert_user_input,
     is_sudoku_grid_valid,
@@ -7,8 +7,7 @@ from game import (
     is_user_input_value_valid,
     remove_user_input,
 )
-from models import UserInput
-
+from app.models import UserInput
 
 
 def handle_command(parsed, board) -> bool:

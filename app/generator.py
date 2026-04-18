@@ -1,8 +1,11 @@
 import copy
 import random
 
-from constants import BOARD_SIZE, SUBGRID_SIZE, EMPTY_CELL
 
+
+BOARD_SIZE = 9
+SUBGRID_SIZE = 3
+EMPTY_CELL = "."
 
 def create_empty_board() -> list[list[str]]:
     return [[EMPTY_CELL for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]

@@ -1,14 +1,14 @@
 import copy
 
-from generator import generate_puzzle
-from game import (game_is_completed)
-from controller import handle_command
-from parser import parse_command
-from render import print_board
+from app.generator import generate_puzzle
+from app.game import game_is_completed
+from app.controller import handle_command
+from app.parser import parse_command
+from app.render import print_board
 
 
 
-def run():
+def start():
     print("Welcome to Sudoku!\nHere is your puzzle:\n")
     initial_board, solution_board = generate_puzzle()
     board = copy.deepcopy(initial_board)
@@ -29,4 +29,4 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    start()

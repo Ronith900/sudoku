@@ -1,5 +1,5 @@
 
-from game import (
+from app.game import (
     game_is_completed,
     get_user_object_from_user_response,
     insert_user_input,
@@ -8,7 +8,7 @@ from game import (
     is_sudoku_grid_valid,
     remove_user_input,
 )
-from models import SudokuCheckReport,UserInput,HintReport
+from app.models import SudokuCheckReport,UserInput,HintReport
 import pytest
 
 

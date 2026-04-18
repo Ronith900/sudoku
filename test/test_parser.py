@@ -1,5 +1,5 @@
 import pytest
-from parser import parse_command
+from app.parser import parse_command
 
 
 @pytest.mark.parametrize(

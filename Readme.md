@@ -30,11 +30,29 @@ sudoku/
     └── test_parser.py
 ```
 
-Requirements
+# Requirements for this project
+
+```text
 Python 3.12 (or your version)
 pytest
+```
+
+## Installation
+
+```bash
+git clone https://github.com/Ronith900/sudoku.git
+cd sudoku
+
+For Mac users
+    python -m venv venv (Create venv)
+    source venv/bin/activate
+
+pip install -r requirements.txt
+```
 
 # How to run the game
 
-From project root
+```bash
+From the Project root
 python main.py
+```
