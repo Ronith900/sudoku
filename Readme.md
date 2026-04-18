@@ -70,7 +70,7 @@ git clone https://github.com/Ronith900/sudoku.git
 cd sudoku
 
 # Create virtual environment
-python -m venv venv
+python3 -m venv venv
 
 # Activate virtual environment
 source venv/bin/activate
@@ -89,7 +89,7 @@ git clone https://github.com/Ronith900/sudoku.git
 cd sudoku
 
 # Create virtual environment
-python -m venv venv
+python3 -m venv venv
 
 # Activate virtual environment
 venv\Scripts\activate
