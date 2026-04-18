@@ -26,3 +26,8 @@ class ParsedCommand:
     cell: Optional[str] = None
     value: Optional[str] = None
     raw: str = ""
+
+@dataclass
+class CellPrefilled:
+    is_prefilled: bool
+    message: str

@@ -62,3 +62,10 @@ cd sudoku
 From the Project root
 python main.py
 ```
+
+# How to execute the test cases
+
+```bash
+From the Project root
+python -m pytest -v
+```

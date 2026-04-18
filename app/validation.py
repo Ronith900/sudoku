@@ -1,10 +1,12 @@
-from app.models import UserInput,SudokuCheckReport
+from app.models import UserInput,SudokuCheckReport,CellPrefilled
 from collections import defaultdict
 from app.constants import INDEX_TO_ROW
 
 
-def is_cell_prefilled(user_input: UserInput,pre_filled_cells: set) -> bool:
-    return user_input.cell in pre_filled_cells
+def is_cell_prefilled(user_input: UserInput,pre_filled_cells: set) -> CellPrefilled:
+    if user_input.cell in pre_filled_cells:
+        return CellPrefilled(True,f'Invalid move. {user_input.cell} is pre-filled.')
+    return CellPrefilled(False,f'Move accepted')
 
 
 def is_grid_valid(board) -> SudokuCheckReport:

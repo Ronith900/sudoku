@@ -1,11 +1,12 @@
 
 from app.validation import is_cell_prefilled,is_grid_valid,is_game_completed
-from app.models import UserInput
+from app.models import UserInput,CellPrefilled
 import pytest
 
-
 pre_filled_cells = {"B1","A1","A4"}
-@pytest.mark.parametrize("user_input, expected",[(UserInput("A1",6),True),(UserInput("B2",6),False)])
+@pytest.mark.parametrize("user_input, expected",[(UserInput("A1",6),CellPrefilled(True,"Invalid move. A1 is pre-filled.")
+),(UserInput("B2",6),CellPrefilled(False,"Move accepted")
+)])
 def test_is_cell_valid(user_input,expected):
     result = is_cell_prefilled(user_input,pre_filled_cells)
     assert result == expected

@@ -80,7 +80,6 @@ def remove_cells(board: list[list[str]], cells_to_remove: int) -> list[list[str]
 
 def get_pre_filled_cells(board):
     pre_filled_cells = set()
-
     for row_index in range(len(board)):
         for col_index in range(len(board[row_index])):
             if board[row_index][col_index] != ".":
@@ -88,6 +87,7 @@ def get_pre_filled_cells(board):
 
     return pre_filled_cells
 
+# need to generate a puzzle which has 30 pre-filled cells for the game to begin
 def generate_puzzle(cells_to_remove: int = 51) -> tuple[list[list[str]], list[list[str]]]:
     solution_board = create_empty_board()
     fill_board(solution_board)
