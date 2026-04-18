@@ -9,7 +9,7 @@ def is_cell_prefilled(user_input: UserInput,pre_filled_cells: set) -> CellPrefil
     return CellPrefilled(False,f'Move accepted')
 
 
-def is_grid_valid(board) -> SudokuCheckReport:
+def is_grid_valid(board: list[list[str]]) -> SudokuCheckReport:
     rows = defaultdict(set)
     cols = defaultdict(set)
     grids = defaultdict(set)
@@ -47,6 +47,6 @@ def is_grid_valid(board) -> SudokuCheckReport:
 
 
 
-def is_game_completed(current_board,solution_board) -> bool:
+def is_game_completed(current_board: list[list[str]],solution_board:list[list[str]]) -> bool:
     return current_board == solution_board
 

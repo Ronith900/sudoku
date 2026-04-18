@@ -1,5 +1,3 @@
-import copy
-
 from app.generator import generate_puzzle
 from app.controller import handle_command
 from app.parser import parse_command
@@ -7,7 +5,7 @@ from app.render import print_board
 from app.validation import is_game_completed
 
 
-
+# Entry point to the game
 def start():
     print("Welcome to Sudoku!\nHere is your puzzle:\n")
     sudoku_board, solution_board,pre_filled_cells = generate_puzzle()

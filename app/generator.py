@@ -78,7 +78,7 @@ def remove_cells(board: list[list[str]], cells_to_remove: int) -> list[list[str]
 
     return puzzle
 
-def get_pre_filled_cells(board):
+def get_pre_filled_cells(board:list[list[str]]):
     pre_filled_cells = set()
     for row_index in range(len(board)):
         for col_index in range(len(board[row_index])):

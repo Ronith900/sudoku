@@ -17,6 +17,6 @@ from app.parser import parse_command
         ("", "invalid"),
     ],
 )
-def test_parse_command_action(user_input, expected_action):
+def test_parse_command(user_input, expected_action):
     result = parse_command(user_input)
     assert result.action == expected_action

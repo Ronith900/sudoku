@@ -15,7 +15,7 @@ class SudokuCheckReport:
 
 
 @dataclass
-class HintReport:
+class Hint:
     board_valid: bool
     board_filled: bool
     message: str

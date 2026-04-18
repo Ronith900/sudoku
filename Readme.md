@@ -19,7 +19,7 @@ Features include:
 ```text
 sudoku/
 ├── main.py
-├── README.md
+├── Readme.md
 ├── app/
 │   ├── controller.py
 │   ├── game.py
@@ -29,7 +29,7 @@ sudoku/
 │   ├── validation.py
 │   ├── models.py
 │   └── constants.py
-└── tests/
+└── test/
     ├── test_game.py
     ├── test_generator.py
     ├── test_parser.py
@@ -83,14 +83,14 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-# How to run the game
+# To run the game
 
 ```bash
 From the Project root
 python main.py
 ```
 
-# How to execute the test cases
+# To execute the test cases
 
 ```bash
 From the Project root
