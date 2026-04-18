@@ -1,6 +1,6 @@
 
 from app.game import hint
-from app.models import HintReport
+from app.models import Hint
 
 
 def test_hint_returns_invalid_when_board_is_invalid():
@@ -30,7 +30,7 @@ def test_hint_returns_invalid_when_board_is_invalid():
 
     result = hint(current_board, solution_board)
 
-    assert result == HintReport(
+    assert result == Hint(
         board_valid=False,
         board_filled=False,
         message="Board is invalid",
@@ -64,7 +64,7 @@ def test_hint_fills_first_empty_cell():
 
     result = hint(current_board, solution_board)
 
-    assert result == HintReport(
+    assert result == Hint(
         board_valid=True,
         board_filled=False,
         message="Hint: Cell A3 = 4",
