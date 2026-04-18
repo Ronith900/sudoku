@@ -36,10 +36,25 @@ sudoku/
     └── test_validation.py
 ```
 
+# Design overview
+
+The codebase is organised using a modular layered design with clear separation of concerns:
+
+- `main.py` – application entry point and game loop
+- `controller.py` – routes parsed commands to the correct actions
+- `parser.py` – parses user input commands such as `A3 4`, `hint`, `check`
+- `game.py` – gameplay operations such as insert, remove, and hint
+- `validation.py` – validates Sudoku rules, board completion, and user moves
+- `generator.py` – dynamically generates a new Sudoku puzzle for each game
+- `render.py` – prints the Sudoku board to the terminal
+- `models.py` – shared dataclasses / models
+
+Assumption - Hint function will only provide the next hint if the board is already valid
+
 # Requirements for this project
 
 ```text
-Python 3.12 (or your version)
+Python 3.11 or later
 pytest
 ```
 

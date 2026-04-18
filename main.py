@@ -24,6 +24,7 @@ def start():
             print_board(sudoku_board)
             print("Congratulations. You have successfully completed the Sudoku puzzle!\n")
             input("Press any key to play once more")
+            sudoku_board, solution_board,pre_filled_cells = generate_puzzle()
 
 
 if __name__ == "__main__":
