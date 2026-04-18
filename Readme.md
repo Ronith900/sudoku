@@ -42,18 +42,39 @@ pytest
 ## For Mac users
 
 ```bash
+# Clone the repository
 git clone https://github.com/Ronith900/sudoku.git
+
+# Move into project folder
 cd sudoku
-python -m venv venv (Create venv)
+
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
 source venv/bin/activate
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
 ## For Windows users
 
 ```bash
+# Clone the repository
 git clone https://github.com/Ronith900/sudoku.git
+
+# Move into project folder
 cd sudoku
+
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
 ```
 
 # How to run the game
@@ -69,3 +90,26 @@ python main.py
 From the Project root
 python -m pytest -v
 ```
+
+# Demo
+
+<img src="screenshots/game_start.png" width="700">
+### Start Game
+
+![Game Start](screenshots/game_start.png)
+<img src="screenshots/clear_hint.png" width="700">
+
+### Clear and Hint Feature
+
+![Hint Demo](screenshots/clear_hint.png)
+
+<img src="screenshots/test_cases_results.png" width="700">
+### Pytest Results
+
+![Tests](screenshots/test_cases_results.png)
+
+<img src="screenshots/user_input.png" width="700">
+
+### User Input
+
+![User Input](screenshots/user_input.png)
