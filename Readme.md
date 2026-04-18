@@ -19,15 +19,21 @@ Features include:
 ```text
 sudoku/
 ├── main.py
-├── game.py
-├── parser.py
-├── render.py
-├── models.py
-├── constants.py
 ├── README.md
+├── app/
+│   ├── controller.py
+│   ├── game.py
+│   ├── generator.py
+│   ├── parser.py
+│   ├── render.py
+│   ├── validation.py
+│   ├── models.py
+│   └── constants.py
 └── tests/
     ├── test_game.py
-    └── test_parser.py
+    ├── test_generator.py
+    ├── test_parser.py
+    └── test_validation.py
 ```
 
 # Requirements for this project
